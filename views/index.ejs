@@ -4,494 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <style>
-        /* Colors */
-:root {
-  --black: #333;
-  --dark-red: rgba(255, 0, 0, 0.5);
-  --grey: #666;
-  --lighter-black: #19292e;
-  --red: rgba(255, 0, 0, 0.75);
-  --white: #f9fcff;
-}
-
-/* Basic Setup */
-
-html {
-  box-sizing: border-box;
-  min-width: 400px;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-::selection,
-::-moz-selection {
-  background: var(--red);
-  color: var(--lighter-black);
-}
-
-/* Text styles */
-@font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Open Sans"), local("OpenSans"),
-    url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff)
-      format("woff");
-}
-
-@font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Open Sans Bold"), local("OpenSans-Bold"),
-    url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff)
-      format("woff");
-}
-
-html {
-  background: var(--white);
-  color: var(--black);
-  font-size: 10px;
-  font-family: "Avenir Next", Open Sans, sans-serif;
-  line-height: 1.15;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  font-size: 1.8rem;
-}
-
-h1 {
-  font-size: 4.8rem;
-}
-
-h2 {
-  font-size: 4.7em;
-}
-
-h3 {
-  font-size: 2.5em;
-  text-align: center;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--lighter-black);
-}
-
-p,
-li {
-  font-size: 2rem;
-  line-height: 1.5;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-a {
-  box-shadow: inset 0 -0.5em var(--dark-red);
-  color: var(--black);
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0, 1, 0.3, 1);
-}
-
-a:hover {
-  box-shadow: inset 0 -1.5em var(--red);
-  color: var(--white);
-}
-
-.white-text {
-  color: var(--white) !important;
-}
-
-.red-text {
-  color: var(--red);
-}
-
-.text-center {
-  text-align: center !important;
-}
-
-/* General Styles */
-.grid-list {
-  display: grid;
-  grid-row-gap: 40px;
-  grid-template-columns: repeat(4, minmax(100px, 1fr));
-  text-align: center;
-}
-
-.grid-list > li > a:hover {
-  color: var(--red);
-}
-
-section {
-  align-content: center;
-  display: grid;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 40px 30px 100px 30px;
-}
-
-section > div {
-  max-width: 1000px;
-  overflow: hidden;
-}
-
-.svg-image {
-  fill: var(--white);
-  height: 80px;
-  padding: 5px;
-  width: 80px;
-}
-
-/* Header Styles */
-header {
-  height: 100vh;
-  min-height: 1200px;
-  overflow: hidden;
-  position: relative;
-}
-
-header:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.heading {
-  color: var(--lighter-black);
-  line-height: 1;
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  text-shadow: -1px -1px 0 var(--white), 1px -1px 0 var(--white),
-    -1px 1px 0 var(--white), 1px 1px 0 var(--white);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 30em;
-  z-index: 10;
-}
-
-.intro {
-  font-size: 8em;
-  margin-bottom: 0;
-}
-
-.lead {
-  color: var(--grey);
-  font-size: 2em;
-  margin-bottom: 60px;
-}
-
-.header-btn {
-  background: var(--lighter-black);
-  border: 2px solid var(--lighter-black);
-  border-radius: 4px;
-  box-shadow: none;
-  color: var(--white);
-  cursor: pointer;
-  font-size: 90%;
-  font-weight: normal;
-  padding: 20px;
-  text-shadow: none;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.header-btn:hover {
-  background: var(--white);
-  box-shadow: none;
-  color: var(--lighter-black);
-}
-
-.main-photo {
-  background: url("https://i.ibb.co/WsWLGj0/IMG-20231013-100822566.jpg");
-  background-position: center;
-  background-size: cover;
-  border: 7px solid var(--lighter-black);
-  border-radius: 50%;
-  height: 20em;
-  position: absolute;
-  top: calc(45% - 25.5em);
-  left: calc(50% - 25em);
-  width: 20em;
-}
-
-.main-photo:before {
-  border: 7px solid var(--white);
-  border-radius: 50%;
-  content: " ";
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  bottom: 1px;
-  left: 1px;
-  z-index: -1;
-}
-
-/* Portfolio Styles */
-
-.portfolio-img svg {
-  fill: var(--lighter-black);
-  width: 100%;
-}
-
-.portfolio-img {
-  -webkit-transform: translateY(5em);
-  transform: translateY(5em);
-}
-
-.section-lead {
-  margin-bottom: 60px;
-}
-
-/* Social Styles */
-#social-contact {
-  cursor: pointer;
-}
-
-/* Contact Form Styles */
-
-fieldset {
-  border: none;
-  padding: 0;
-}
-
-textarea {
-  resize: none;
-}
-
-input,
-textarea,
-button {
-  background: var(--white);
-  border: 5px solid var(--lighter-black);
-  border-radius: 4px;
-  padding: 1em;
-  width: 100%;
-}
-
-input:active,
-textarea:active {
-  outline: var(--red);
-}
-
-form label {
-  display: block;
-  font-weight: bold;
-}
-
-.contact-form {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 1fr 1fr;
-}
-
-#contact-form-no-bots,
-#contact-form-message,
-#contact-form-submit {
-  grid-column: 1 / -1;
-}
-
-#contact-form-submit {
-  background-color: var(--lighter-black);
-  color: var(--white);
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-#contact-form-submit:hover {
-  background-color: var(--white);
-  color: var(--lighter-black);
-}
-
-#contact-form-submit:active {
-  background-color: var(--red);
-  color: var(--lighter-black);
-}
-
-/* Footer Styles */
-footer {
-  background: var(--black);
-  color: var(--white);
-  padding: 20px 0;
-  text-align: center;
-}
-
-/* General Styles */
-.dark-bg {
-  background: var(--lighter-black);
-  color: var(--white);
-}
-
-.dark-bg a {
-  color: var(--white);
-  transition: all 0.4s cubic-bezier(0, 1, 0.3, 1);
-}
-
-.dark-bg a:hover {
-  color: var(--black);
-}
-
-/*/////////////////////////////////
-// Animation Styles
-/////////////////////////////////*/
-
-/* Header */
-header {
-  opacity: 0;
-  -webkit-transition: opacity 0.5s 0.25s ease-out;
-  transition: opacity 0.5s 0.25s ease-out;
-}
-
-header.is-visible {
-  opacity: 1;
-}
-
-.main-photo {
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
-}
-
-.heading {
-  -webkit-transform: translate(-50%, calc(-50% + 5em));
-  transform: translate(-50%, calc(-50% + 5em));
-}
-
-.is-visible .main-photo {
-  -webkit-transform: none;
-  transform: none;
-}
-
-.is-visible .heading {
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.main-photo,
-.heading {
-  -webkit-transition: -webkit-transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1);
-  transition: -webkit-transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1);
-  transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1);
-  transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1),
-    -webkit-transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1);
-  will-change: transform;
-}
-
-/* Icons Grid List / Portfolio */
-
-.grid-list,
-.portfolio-img {
-  opacity: 0;
-  -webkit-transition: opacity 0.3s 0.25s ease-out,
-    -webkit-transform 1.5s 0.25s cubic-bezier(0, 1, 0.3, 1);
-  transition: opacity 0.3s 0.25s ease-out,
-    -webkit-transform 1.5s 0.25s cubic-bezier(0, 1, 0.3, 1);
-  transition: transform 1.5s 0.25s cubic-bezier(0, 1, 0.3, 1),
-    opacity 0.3s 0.25s ease-out;
-  transition: transform 1.5s 0.25s cubic-bezier(0, 1, 0.3, 1),
-    opacity 0.3s 0.25s ease-out,
-    -webkit-transform 1.5s 0.25s cubic-bezier(0, 1, 0.3, 1);
-  will-change: transform, opacity;
-}
-
-.grid-list.slide-left {
-  -webkit-transform: translateX(-4em);
-  transform: translateX(-4em);
-}
-
-.grid-list.slide-right {
-  -webkit-transform: translateX(4em);
-  transform: translateX(4em);
-}
-
-.grid-list.is-visible {
-  opacity: 1;
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-}
-
-.portfolio-img.is-visible {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-}
-
-/*/////////////////////////////////
-// Media Queries
-/////////////////////////////////*/
-
-@media only screen and (max-width: 700px) {
-  .grid-list {
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  header {
-    min-height: 800px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .main-photo {
-    top: 0;
-    left: 0;
-  }
-
-  .heading {
-    top: 50%;
-    width: 20em;
-  }
-
-  .intro {
-    font-size: 6em;
-  }
-
-  .lead {
-    font-size: 1.5em;
-    width: 100%;
-  }
-
-  .grid-list {
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  .contact-form {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  h2 {
-    font-size: 3.7em;
-  }
-
-  .contact-form {
-    grid-template-columns: 1fr;
-  }
-}
-
-    </style>
+    <link rel="stylesheet" href="../stylesheet/style.css">
 </head>
 <body>
     <!-- Header -->
@@ -512,8 +25,8 @@ header.is-visible {
     <div class="about-summary">
       <h2 class="white-text">About</h2>
       <p>
-        I'm a freelancer living in <strong>Portugal</strong> who is
-        originally from the <strong>UK</strong>. I teach business
+        I'm a freelancer living in <strong><%= location%></strong> who is
+        originally from the <strong><%=location%></strong>. I teach business
         English remotely and I create websites.
       </p>
   
@@ -721,9 +234,7 @@ header.is-visible {
       <p class="section-lead">
         This section is coming soon. In the meantime, you can check
         out my
-        <a href="http://github.com/Karl-Horning" target="_blank">GitHub</a>
-        and
-        <a href="http://codepen.io/karlhorning/" target="_blank">CodePen</a>
+        <a href="https://github.com/dharamraj-dev" target="_blank">GitHub</a>
         accounts to see some of the projects that I have worked on
         so far.
       </p>
@@ -748,7 +259,7 @@ header.is-visible {
     <div class="social-icons">
       <ul class="grid-list slide-left show-on-scroll">
         <li>
-          <a href="http://github.com/Karl-Horning" target="_blank">
+          <a href="http://github.com/dharamraj-dev" target="_blank">
             <div class="svg-container">
               <svg class="svg-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
                 <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
@@ -768,17 +279,7 @@ header.is-visible {
           </a>
         </li>
         <li>
-          <a href="https://www.freecodecamp.org/karl-horning" target="_blank">
-            <div class="svg-container">
-              <svg class="svg-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                <path d="M69.3 144.5c-41 68.5-36.4 163 1 227C92.5 409.7 120 423.9 120 438c0 6.8-6 13-12.8 13C87.7 451 8 375.5 8 253.2c0-111.5 78-186 97.1-186 6 0 14.9 4.8 14.9 11.1 0 12.7-28.3 28.6-50.7 66.2zm195.8 213.8c4.5 1.8 12.3 5.2 12.3-1.2 0-2.7-2.2-2.9-4.3-3.6-8.5-3.4-14-7.7-19.1-15.2-8.2-12.1-10.1-24.2-10.1-38.6 0-32.1 44.2-37.9 44.2-70 0-12.3-7.7-15.9-7.7-19.3 0-2.2.7-2.2 2.9-2.2 8 0 19.1 13.3 22.5 19.8 2.2 4.6 2.4 6 2.4 11.1 0 7-.7 14.2-.7 21.3 0 27 31.9 19.8 31.9 6.8 0-6-3.6-11.6-3.6-17.4 0-.7 0-1.2.7-1.2 3.4 0 9.4 7.7 11.1 10.1 5.8 8.9 8.5 20.8 8.5 31.4 0 32.4-29.5 49-29.5 56 0 1 2.9 7.7 12.1 1.9 29.7-15.1 53.1-47.6 53.1-89.8 0-33.6-8.7-57.7-32.1-82.6-3.9-4.1-16.4-16.9-22.5-16.9-8.2 0 7.2 18.6 7.2 31.2 0 7.2-4.8 12.3-12.3 12.3-11.6 0-14.5-25.4-15.9-33.3-5.8-33.8-12.8-58.2-46.4-74.1-10.4-5-36.5-11.8-36.5-2.2 0 2.4 2.7 4.1 4.6 5.1 9.2 5.6 19.6 21.4 19.6 38.2 0 46.1-57.7 88.2-57.7 136.2-.2 40.3 28.1 72.6 65.3 86.2zM470.4 67c-6 0-14.4 6.5-14.4 12.6 0 8.7 12.1 19.6 17.6 25.4 81.6 85.1 78.6 214.3 17.6 291-7 8.9-35.3 35.3-35.3 43.5 0 5.1 8.2 11.4 13.2 11.4 25.4 0 98.8-80.8 98.8-185.7C568 145.9 491.8 67 470.4 67zm-42.3 323.1H167c-9.4 0-15.5 7.5-15.5 16.4 0 8.5 7 15.5 15.5 15.5h261.1c9.4 0 11.9-7.5 11.9-16.4 0-8.5-3.5-15.5-11.9-15.5z" />
-              </svg>
-            </div>
-            <div class="svg-title-container">freeCodeCamp</div>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/karlhorning/" target="_blank">
+          <a href="https://www.linkedin.com/in/dharamraj-yadav/" target="_blank">
             <div class="svg-container">
               <svg class="svg-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
@@ -788,7 +289,7 @@ header.is-visible {
           </a>
         </li>
         <li>
-          <a href="https://twitter.com/KarlHorning" target="_blank">
+          <a href="https://twitter.com/Dharamraj_IN" target="_blank">
             <div class="svg-container">
               <svg class="svg-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z" />
@@ -798,7 +299,7 @@ header.is-visible {
           </a>
         </li>
         <li>
-          <a href="https://www.facebook.com/karlhorning" target="_blank">
+          <a href="https://www.facebook.com/profile.php?id=100084644627368" target="_blank">
             <div class="svg-container">
               <svg class="svg-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
@@ -808,7 +309,7 @@ header.is-visible {
           </a>
         </li>
         <li>
-          <a href="https://www.instagram.com/karl_horning/" target="_blank">
+          <a href="https://www.instagram.com/dharam._yadav_/" target="_blank">
             <div class="svg-container">
               <svg class="svg-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
@@ -862,67 +363,6 @@ header.is-visible {
     </p>
   </footer>
 
-  <script>
-    // Scroll function from Donovan Hutchinson's Level Up Your CSS Animation Skills Udemy course
-// Detect request animation frame
-const scroll =
-  window.requestAnimationFrame ||
-  // IE Fallback
-  function (callback) {
-    window.setTimeout(callback, 1000 / 60);
-  };
-const elementsToShow = document.querySelectorAll(".show-on-scroll");
-
-function loop() {
-  elementsToShow.forEach(function (element) {
-    if (isElementInViewport(element)) {
-      element.classList.add("is-visible");
-    } else {
-      element.classList.remove("is-visible");
-    }
-  });
-
-  scroll(loop);
-}
-
-// Call the loop for the first time
-loop();
-
-// Helper function from: http://stackoverflow.com/a/7557433/274826
-function isElementInViewport(el) {
-  // special bonus for those using jQuery
-  if (typeof jQuery === "function" && el instanceof jQuery) {
-    el = el[0];
-  }
-  const rect = el.getBoundingClientRect();
-  return (
-    (rect.top <= 0 && rect.bottom >= 0) ||
-    (rect.bottom >=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.top <=
-        (window.innerHeight || document.documentElement.clientHeight)) ||
-    (rect.top >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight))
-  );
-}
-
-// Smooth scroll function
-const headerBtn = document.getElementById("header-btn");
-const socialContact = document.getElementById("social-contact");
-const contactForm = document.getElementById("contact");
-
-function scrollToForm() {
-  contactForm.scrollIntoView({ behavior: "smooth" }); // Top
-}
-
-headerBtn.addEventListener("click", scrollToForm);
-socialContact.addEventListener("click", scrollToForm);
-
-// No bots!
-const contactFormNoBots = document.getElementById("contact-form-no-bots");
-contactFormNoBots.parentNode.removeChild(contactFormNoBots);
-
-  </script>
+  <script src="../js/script.js"></script>
 </body>
 </html>

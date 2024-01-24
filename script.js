@@ -13,9 +13,11 @@ const app = express();
 // EJS File
 app.set("view engine", "ejs")
 
+app.use(express.static('./public'))
+
 // Routers
 app.get("/", function(req,res){
-    res.render("index")
+    res.render("index", {location: "India"})
 })
 
 app.get("/profile", function(req, res){
