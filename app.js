@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const userRouter = require('./routes/user');
@@ -8,7 +9,7 @@ const { checkForAuthenticationCookie } = require('./middlewares/authentication')
 const BlogModel = require('./models/blog');
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 
 app.set('view engine', 'ejs');
@@ -21,7 +22,7 @@ app.use(checkForAuthenticationCookie('token'));
 app.use(express.static(path.resolve('./public')))
 
 // DB
-connectDB('mongodb://127.0.0.1:27017/blogapp').then(() => console.log("Database Connected")).catch(() => console.log("Error in DB Connection"))
+connectDB(process.env.MONGO_URL).then(() => console.log("Database Connected")).catch(() => console.log("Error in DB Connection"))
 
 app.use('/user', userRouter)
 app.use('/blog', blogRouter)

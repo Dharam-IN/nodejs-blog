@@ -1,35 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <%- include('./partials/head') %>
-        <title>Add Blog</title>
+    <title>Add Blog</title>
+    <style>
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            background-color: #f8f9fa;
+            padding: 0 30px;
+        }
+        .form-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .form-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .form-header p {
+            color: #6c757d;
+        }
+    </style>
 </head>
-
 <body>
     <%- include('./partials/nav') %>
 
-        <div class="container mt-5">
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h2>Add a New Blog</h2>
+                <p>Share your thoughts and experiences</p>
+            </div>
             <form action="/blog" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="title" class="form-label">Add Title</label>
-                    <input type="text" class="form-control" name="title" id="title" aria-describedby="title" placeholder="Enter Title">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" required>
                 </div>
                 <div class="mb-3">
-                    <label for="body">Body</label>
-                    <textarea class="form-control" placeholder="Enter Body Content" name="body" id="body"></textarea>
+                    <label for="body" class="form-label">Body</label>
+                    <textarea class="form-control" placeholder="Enter Body Content" name="body" id="body" rows="6" required></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="coverImageUrl" class="form-label">Cover Image</label>
-                    <input type="file" class="form-control" name="coverImageUrl" id="coverImageUrl" aria-describedby="coverImageUrl" placeholder="Enter coverImageUrl">
+                    <input type="file" class="form-control" name="coverImageUrl" id="coverImageUrl" required>
                 </div>
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Primary</button>
-                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
             </form>
         </div>
+    </div>
 
-        <%- include('./partials/scripts.ejs') %>
+    <%- include('./partials/scripts.ejs') %>
 </body>
-
 </html>
